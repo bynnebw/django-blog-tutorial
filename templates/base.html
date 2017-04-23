@@ -102,7 +102,8 @@
                     <ul>
                         {% for category in category_list %}
                             <li>
-                                <a href="{% url 'blog:category' category.pk %}">{{ category.name }}</a>
+                                <a href="{% url 'blog:category' category.pk %}">{{ category.name }}
+                                    ({{ category.num_posts }})</a>
                             </li>
                         {% endfor %}
                     </ul>

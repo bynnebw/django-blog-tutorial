@@ -2,7 +2,7 @@
 
 ## 项目演示地址
 
-http://zmrenwu.com/
+http://demo.zmrenwu.com/
 
 ## 项目教程
 

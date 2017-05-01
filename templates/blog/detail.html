@@ -52,7 +52,8 @@
             <ul class="list-unstyled">
                 {% for comment in comment_list %}
                     <li class="comment-item">
-                        <span class="name">{{ comment.name }}</span><time class="date">{{ comment.created_time }}</time>
+                        <span class="name">{{ comment.name }}</span>
+                        <time class="date">{{ comment.created_time }}</time>
                         <div class="text">
                             {{ comment.text }}
                         </div>
@@ -64,3 +65,9 @@
         </div>
     </section>
 {% endblock main %}
+{% block toc %}
+    <div class="widget">
+        <h3 class="widget-title">文章目录</h3>
+        {{ toc|safe }}
+    </div>
+{% endblock toc %}

@@ -1,5 +1,6 @@
 import markdown
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
@@ -24,6 +25,16 @@ def index(request):
 
 def index(request):
     post_list = Post.objects.all()
+    paginator = Paginator(post_list, 1)
+    page = request.GET.get('page')
+
+    try:
+        post_list = paginator.page(page)
+    except PageNotAnInteger:
+        post_list = paginator.page(1)
+    except EmptyPage:
+        post_list = paginator.page(paginator.num_pages)
+
     return render(request, 'blog/index.html', context={'post_list': post_list})
 
 

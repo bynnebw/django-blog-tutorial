@@ -109,6 +109,10 @@ class Post(models.Model):
         # python_2_unicode_compatible 装饰器用于兼容 Python2
         return self.title
 
+    def save(self, *args, **kwargs):
+        self.excerpt = self.body[:54]
+        super(Post, self).save(*args, **kwargs)
+
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'pk': self.pk})
 
